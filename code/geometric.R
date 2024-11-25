@@ -100,7 +100,7 @@ for (p in ps) {
     stats <- vector(mode = "numeric", length = B)
     pvalues <- vector(mode = "numeric", length = B)
     alts <- vector(mode = "character", length = B)
-    testName <- "exact"
+    testName <- "geometric_exact"
     for (i in 1:B) {
       set.seed(i)
       x <- rgeom(1, p)
