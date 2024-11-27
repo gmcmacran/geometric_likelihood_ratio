@@ -15,25 +15,26 @@ the asymptotic sampling distributions and type I error rates.
 
 ### An Example
 
-The geometric distribution gives then the probability of the number of
+The geometric distribution gives the probability of the number of
 failures until the first success. As an example, imagine selling fruit
 door-to-door. If there is a 15% chance a home owner purchases, what is
-the probability of needing to visit 11 homes for the first sell?
+the probability of needing to visit *exactly* 11 homes for the first
+sale?
 
 ``` r
 round(dgeom(x = 10, prob = .15), 3)
 #> [1] 0.03
 ```
 
-What is the probability of needing to visit 11 or more homes for the
-first sell?
+What is the probability of needing to visit 11 or *more homes* for the
+first sale?
 
 ``` r
 round(pgeom(q = 10, prob = .15, lower.tail = FALSE), 3)
 #> [1] 0.167
 ```
 
-Note there are a few definitions of geometric distribution. R’s
+Note there are a few definitions of the geometric distribution. R’s
 probability functions count the number of failures before the first
 success. Other definitions count the number of independent trials. Hence
 10 and not 11 in the code.
@@ -55,8 +56,8 @@ distribution causes the other condition to be violated.
 
 ### Simulation Process
 
-- Step 1: Generate the number of failures with a given probability of
-  success.
+- Step 1: Generate the number of failures before the first success with
+  a given probability of success.
 - Step 2: Calculate likelihood test statistic.
 - Step 3: Repeat for b 1 to 10,000.
 - Step 4: Repeat with probability of success between .05 and .95.
@@ -79,7 +80,7 @@ not true, what is the type I error rate?
 
 <img src="man/figures/README-typeOneSummary-1.png" width="100%" />
 
-In general, type I error rates are below the target .05 percent.
+In general, type I error rates are below the target 5 percent.
 Interestingly, the likelihood test is closer to the target .05 than the
 exact test.
 
