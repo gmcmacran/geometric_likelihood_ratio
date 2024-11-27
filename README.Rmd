@@ -24,17 +24,17 @@ For the geometric distribution, satisfying the first condition causes the second
 # Geometric Distribution
 ### An Example
 
-The geometric distribution gives then the probability of the number of failures until the first success. As an example, imagine selling fruit door-to-door. If there is a 15% chance a home owner purchases, what is the probability of needing to visit 11 homes for the first sell?
+The geometric distribution gives the probability of the number of failures until the first success. As an example, imagine selling fruit door-to-door. If there is a 15% chance a home owner purchases, what is the probability of needing to visit *exactly* 11 homes for the first sale?
 
 ```{r geomExample1, echo=TRUE, message=FALSE}
 round(dgeom(x = 10, prob = .15), 3)
 ```
-What is the probability of needing to visit 11 or more homes for the first sell?
+What is the probability of needing to visit 11 or *more homes* for the first sale?
 
 ```{r geomExample2, echo=TRUE, message=FALSE}
 round(pgeom(q = 10, prob = .15, lower.tail = FALSE), 3)
 ```
-Note there are a few definitions of geometric distribution. R's probability functions count the number of failures before the first success. Other definitions count the number of independent trials. Hence 10 and not 11 in the code.
+Note there are a few definitions of the geometric distribution. R's probability functions count the number of failures before the first success. Other definitions count the number of independent trials. Hence 10 and not 11 in the code.
 
 ### Asymptotic Theory
 
@@ -48,7 +48,7 @@ This means satisfying one condition for the asymptotic  $\chi^2$ sampling distri
 # Sampling Distribution
 ### Simulation Process
 
-* Step 1: Generate the number of failures with a given probability of success.
+* Step 1: Generate the number of failures before the first success with a given probability of success.
 * Step 2: Calculate likelihood test statistic.
 * Step 3: Repeat for b 1 to 10,000.
 * Step 4: Repeat with probability of success between .05 and .95.
@@ -140,6 +140,6 @@ ggplot(temp, aes(x = TypeI, y = type)) +
 rm(list = ls())
 ```
 
-In general, type I error rates are below the target .05 percent. Interestingly, the likelihood test is closer to the target .05 than the exact test. 
+In general, type I error rates are below the target 5 percent. Interestingly, the likelihood test is closer to the target .05 than the exact test. 
 
 The exact test fails to have exactly .05 type I error rate because the test statistic (number of failures) is discrete and not continuous.
